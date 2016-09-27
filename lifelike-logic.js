@@ -1,11 +1,11 @@
-/** IIFE that creates the private array of arrays of booleans, fills with
+/** Creates the private array of arrays of booleans, fills with
   * false, returns methods for manipulation
   * @param {number} fieldHeight height of field in rows
   * @param {number} fieldWidth width of field in columns
   * @return {object} Methods giveCellLife, killCell, getCellState,
   *  killEverything, countNeighborhood.
   */
-var logic = (function(fieldHeight, fieldWidth) {
+function makeField(fieldHeight, fieldWidth) {
   var lifeAtRowCol = [];
   var rowNum;
   var colNum;
@@ -49,7 +49,9 @@ var logic = (function(fieldHeight, fieldWidth) {
       return count;
     }
   };
-})(37, 60);
+}
+
+logic = makeField(37, 60);
 
 // So that the file can be tested and run in the browser
 if ((typeof module !== "undefined") && (typeof module.exports !==
