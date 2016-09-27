@@ -1,0 +1,14 @@
+{
+  "name": "lifelike2",
+  "version": "0.0.1",
+  "description": "Implementation of Conway's game of life and variants",
+  "main": "lifelike-logic.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lifelike</title>
+<link rel="stylesheet" type="text/css" href="lifelike.css" />
+</head>
+<body onload="graphics.drawGridLines(37, 60)">
+<h1>Lifelike: Conway's Game of Life and Variants</h1>
+<p>Click cells to switch from alive to dead and vice versa. Step advances one iteration; run/stop advances at two iterations per second; reset clears all cells. John Conway's original Game of Life uses the ruleset where an empty cell becomes alive if surrounded by three of the eight surrounding cells are alive, and a live cell survives if two or three are alive. These instructions are known as the B3/S23 rule. You can change the rule by checking the boxes below the field. <a href="https://en.wikipedia.org/wiki/Life-like_cellular_automaton">Notable rules</a> include: B2/S (Seeds), B36/S23 (Highlife), B3/S012345678 (Life without Death), B1357/S1357 (Replicator), and B3678/34678 (Day and Night.)</p>
+<canvas id="fieldOfLife" width="601" height="371" onclick="canvasCalc.processClickOnCanvas(event)">Your browser does not support the HTML5 canvas tag.</canvas>
+<input type="button" id = "runStop" value="Run" onclick="runOrStop()">
+<input type="button" value="Step" onclick="nextGenCalc.iterateNextGen()">
+<input type="button" value="Reset" onclick="killEverything()">
+<table>
+  <tr>
+    <th>Number of neighbouring cells necessary to make empty cell live</th>
+    <th>Number of neighbouring cells necessary for a living cell to survive</th>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B0">0</td>
+    <td><input type="checkbox" id="S0">0</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B1">1</td>
+    <td><input type="checkbox" id="S1">1</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B2">2</td>
+    <td><input type="checkbox" id="S2" checked=true>2</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B3" checked=true>3</td>
+    <td><input type="checkbox" id="S3" checked=true>3</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B4">4</td>
+    <td><input type="checkbox" id="S4">4</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B5">5</td>
+    <td><input type="checkbox" id="S5">5</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B6">6</td>
+    <td><input type="checkbox" id="S6">6</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B7">7</td>
+    <td><input type="checkbox" id="S7">7</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" id="B8">8</td>
+    <td><input type="checkbox" id="S8">8</td>
+  </tr>
+</table>
+<script src="lifelike-ui.js"></script>
+<script src="lifelike-logic.js"></script>
+</body>
+</html>
