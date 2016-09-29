@@ -51,7 +51,7 @@ function makeField(fieldHeight, fieldWidth) {
   };
 }
 
-logic = makeField(37, 60);
+var logic = makeField(37, 60);
 
 // So that the file can be tested and run in the browser
 if ((typeof module !== "undefined") && (typeof module.exports !==

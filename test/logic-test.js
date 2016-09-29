@@ -1,5 +1,6 @@
+/* eslint max-len: ["error", { "ignoreStrings": true }] */
+
 var expect = require("chai").expect;
-// var conway = require("../lifelike-logic");
 var testing = require("../lifelike-logic.js");
 
 describe("Give Cell Life", function() {

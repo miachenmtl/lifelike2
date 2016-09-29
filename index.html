@@ -6,7 +6,7 @@
 </head>
 <body onload="graphics.drawGridLines(37, 60)">
 <h1>Lifelike: Conway's Game of Life and Variants</h1>
-<p>Click cells to switch from alive to dead and vice versa. Step advances one iteration; run/stop advances at two iterations per second; reset clears all cells. John Conway's original Game of Life uses the ruleset where an empty cell becomes alive if surrounded by three of the eight surrounding cells are alive, and a live cell survives if two or three are alive. These instructions are known as the B3/S23 rule. You can change the rule by checking the boxes below the field. <a href="https://en.wikipedia.org/wiki/Life-like_cellular_automaton">Notable rules</a> include: B2/S (Seeds), B36/S23 (Highlife), B3/S012345678 (Life without Death), B1357/S1357 (Replicator), and B3678/34678 (Day and Night.)</p>
+<p>Click cells to switch from alive to dead and vice versa. Step advances one iteration; run/stop advances at two iterations per second by default; reset clears all cells. John Conway's original Game of Life uses the ruleset where an empty cell becomes alive if surrounded by three of the eight surrounding cells are alive, and a live cell survives if two or three are alive. These instructions are known as the B3/S23 rule. You can change the rule by checking the boxes below the field. <a href="https://en.wikipedia.org/wiki/Life-like_cellular_automaton">Notable rules</a> include: B2/S (Seeds), B36/S23 (Highlife), B3/S012345678 (Life without Death), B1357/S1357 (Replicator), and B3678/34678 (Day and Night.)</p>
 <select id="gridsize" size="4" onchange="graphics.resizeGrid()">
   <option id="small">Small (25x25)</option>
   <option id="medium" selected>Medium (37x60)</option>
