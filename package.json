@@ -9,6 +9,7 @@
   "scripts": {
     "test": "mocha --reporter spec"
   },
-  "author": "",
+  "author": "Mia Chen",
   "license": "ISC"
+  }
 }

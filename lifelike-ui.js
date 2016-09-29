@@ -55,6 +55,42 @@ var graphics = {
     var c = canvas.getContext("2d");
     c.fillStyle = "#FFFFFF";
     c.fillRect(cellX, cellY, 9, 9);
+  },
+  /** Resizes the grid when user changes selection
+    */
+  resizeGrid: function() {
+    var sizeIndex = document.getElementById("gridsize").selectedIndex;
+    switch (sizeIndex) {
+      case 0: // small 25 x 25
+        killEverything();
+        document.getElementById("fieldOfLife").width = 251;
+        document.getElementById("fieldOfLife").height = 251;
+        this.drawGridLines(25, 25);
+        logic = makeField(25, 25);
+        break;
+      default:
+      case 1: // medium 37 x 60
+        killEverything();
+        document.getElementById("fieldOfLife").width = 601;
+        document.getElementById("fieldOfLife").height = 371;
+        this.drawGridLines(37, 60);
+        logic = makeField(37, 60);
+        break;
+      case 2: // large 62 x 100
+        killEverything();
+        document.getElementById("fieldOfLife").width = 1001;
+        document.getElementById("fieldOfLife").height = 621;
+        this.drawGridLines(62, 100);
+        logic = makeField(62, 100);
+        break;
+      case 3: // huge 100 x 162
+        killEverything();
+        document.getElementById("fieldOfLife").width = 1621;
+        document.getElementById("fieldOfLife").height = 1001;
+        this.drawGridLines(100, 162);
+        logic = makeField(100, 162);
+        break;
+    }
   }
 };
 
@@ -112,7 +148,7 @@ var canvasCalc = {
   }
 };
 
-/** Invoked by Reset, clears all cells
+/** Invoked by Reset and Resize Grid, clears all cells
   */
 function killEverything() {
   var i;
@@ -219,20 +255,54 @@ var nextGenCalc = {
     this.populateNextGen(nextGenState);
   }
 };
-
+/** IIFE to be used for run/Stop
+  */
+var runStop = (function() {
+  var intervalID;
+  var speedIndex = 2;
+  var interval = 500;
+  return {
+    setSpeed: function() {
+      speedIndex = document.getElementById("speed").selectedIndex;
+      switch (speedIndex) {
+        case 0:
+          interval = 1000;
+          break;
+        default:
+        case 1:
+          interval = 500;
+          break;
+        case 2:
+          interval = 250;
+          break;
+        case 3:
+          interval = 100;
+          break;
+      }
+    },
+    run: function() {
+      document.getElementById("speed").disabled = true;
+      intervalID = window.setInterval(function() {
+        nextGenCalc.iterateNextGen();
+      }, interval);
+      document.getElementById("runStop").value = "Stop";
+      console.log("Run");
+    },
+    stop: function() {
+      document.getElementById("speed").disabled = false;
+      window.clearInterval(intervalID);
+      document.getElementById("runStop").value = "Run";
+      console.log("Stop");
+    }
+  };
+})();
 /** Invoked by Run/Stop button, iterates next generation twice every second
   */
-function runOrStop() {
+function processRunStop() {
   var text = document.getElementById("runStop").value;
   if (text === "Run") {
-    intervalID = window.setInterval(function() {
-      nextGenCalc.iterateNextGen();
-    }, 500);
-    document.getElementById("runStop").value = "Stop";
-    console.log("Run");
+    runStop.run();
   } else {
-    window.clearInterval(intervalID);
-    document.getElementById("runStop").value = "Run";
-    console.log("Stop");
+    runStop.stop();
   }
 }
