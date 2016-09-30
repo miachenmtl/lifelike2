@@ -1,4 +1,4 @@
-var intervalID;
+/* global logic:true, makeField */
 
 var graphics = {
 /** When user loads the page or changes grid size, it draws grid lines on the
@@ -120,6 +120,7 @@ var canvasCalc = {
       graphics.fillCell(r, c);
     }
   },
+
   /** Takes coordinates relative to window,returns coordinates relative to canvas
     * @param {object} event The Mouse Event object
     * @return {Array} xyCoords x and y coordinates relative to canvas
@@ -131,6 +132,7 @@ var canvasCalc = {
     var y = parseInt(event.clientY - rect.top, 10) - 2;
     return [x, y];
   },
+
   /** Determines whether click is on a cell or not
   * @param {number} x x coordinate of click relative to canvas
   * @param {number} y y coordinate of click relative to canvas
@@ -182,6 +184,7 @@ var nextGenCalc = {
     birthRuleset[8] = document.getElementById("B8").checked;
     return birthRuleset;
   },
+
   /** Looks at the checkboxes for the number of cells necessary to create life
     * @return {Array} surviveRuleset An array of booleans corresponding to checked boxes
     */
@@ -198,6 +201,7 @@ var nextGenCalc = {
     surviveRuleset[8] = document.getElementById("S8").checked;
     return surviveRuleset;
   },
+
   /** Replaces current array of booleans with next generation's array
     * Also calls functions to update the UI
     * @param {array} nextGenState The next generation
@@ -219,6 +223,7 @@ var nextGenCalc = {
       }
     }
   },
+
   /** Invoked by Step and by Run--SetInterval, calculates next generation
     */
   iterateNextGen: function() {
@@ -296,6 +301,7 @@ var runStop = (function() {
     }
   };
 })();
+
 /** Invoked by Run/Stop button, iterates next generation twice every second
   */
 function processRunStop() {
